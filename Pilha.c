@@ -45,10 +45,10 @@ t_pilha criar() {
  */
 int isVazia(t_pilha * pilha) {
 		if(pilha->topo == -1){
-			printf("\nA pilha está vazia!");
+			//printf("\nA pilha está vazia!");
 			return 1;
 		}else{
-			printf("\nA pilha não está vazia!");
+			//printf("\nA pilha não está vazia!");
 			return 0;
 		}
 }
@@ -62,10 +62,10 @@ int isVazia(t_pilha * pilha) {
  */
 int isCheia(t_pilha * pilha) {
 		if(pilha->topo == MAX-1){
-			printf("\nA pilha está cheia!");
+			//printf("\nA pilha está cheia!");
 			return 1;
 		}else{
-			printf("\nA pilha ainda não está cheia!");
+			//printf("\nA pilha ainda não está cheia!");
 			return 0;
 		}
 }
@@ -102,6 +102,7 @@ t_elemento pop(t_pilha * pilha)
     if (isVazia(pilha))
         return vazio; // erro
     else
+				pilha->vetor[++pilha->topo] = vazio;
         return pilha->vetor[pilha->topo--];
 }
 
@@ -132,15 +133,40 @@ int main(void) {
 	umaPilha = criar();
 
 	//Inserindo elementos na lista (deixando a lista cheia):
-	for(;contador <= MAX;contador++){
+	for(;contador <= (MAX-1);contador++){
 		printf("\nDigite um nome para inserir na pilha: ");
 		scanf("%s", elementoPilha.nome);//input
 		push(&umaPilha, elementoPilha);
 	}
-	
-	//Obtendo o elemento do topo:
-	getElementoTopo(&umaPilha);
-	
 
+	if(isCheia(&umaPilha) == 1){
+		printf("\nPilha está cheia!");
+	}else{
+		printf("\nAinda tem espaço na pilha!");
+	}//Deve mostrar que a fila está cheia
+	
+	//Obtendo e mostrando o elemento do topo:
+	elementoPilha = getElementoTopo(&umaPilha);
+	printf("\nO elemento do topo é: %s", elementoPilha.nome);
+	
+	//Retira o elemento do topo:
+	printf("\nRetirando %s da pilha!", elementoPilha.nome);
+	pop(&umaPilha);
+
+	if(isCheia(&umaPilha) == 1){
+		printf("\nPilha está cheia!");
+	}else{
+		printf("\nAinda tem espaço na pilha!");
+	}//Deve mostrar que a fila não está mais cheia
+
+	//Mostrando o novo elemento do topo:
+	elementoPilha = getElementoTopo(&umaPilha);
+	printf("\nO elemento do topo é: %s", elementoPilha.nome);
+
+	//Mostrando toda a lista(deve ter 2 elementos agora):
+
+	for(contador = 0;contador <= (MAX-1);contador++){
+		printf("\n-> %s", umaPilha.vetor[contador]);
+	}
   return 0;
 }
