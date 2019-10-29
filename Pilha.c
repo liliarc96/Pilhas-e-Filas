@@ -102,7 +102,7 @@ t_elemento pop(t_pilha * pilha)
     if (isVazia(pilha))
         return vazio; // erro
     else
-				pilha->vetor[++pilha->topo] = vazio;
+
         return pilha->vetor[pilha->topo--];
 }
 
@@ -161,11 +161,12 @@ int main(void) {
 
 	//Mostrando o novo elemento do topo:
 	elementoPilha = getElementoTopo(&umaPilha);
-	printf("\nO elemento do topo é: %s", elementoPilha.nome);
+	printf("\n\nO elemento do topo é: %s", elementoPilha.nome);
 
 	//Mostrando toda a lista(deve ter 2 elementos agora):
 
-	for(contador = 0;contador <= (MAX-1);contador++){
+	printf("\n\nItens da pillha:");
+	for(contador = 0; contador <= umaPilha.topo;contador++){
 		printf("\n-> %s", umaPilha.vetor[contador]);
 	}
   return 0;
