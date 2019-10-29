@@ -161,13 +161,13 @@ int main(void) {
 
 	//Mostrando o novo elemento do topo:
 	elementoPilha = getElementoTopo(&umaPilha);
-	printf("\n\nO elemento do topo é: %s", elementoPilha.nome);
+	printf("\nO elemento do topo é: %s", elementoPilha.nome);
 
 	//Mostrando toda a lista(deve ter 2 elementos agora):
 
-	printf("\n\nItens da pillha:");
+	printf("\n\nItens da pilha:");
 	for(contador = 0; contador <= umaPilha.topo;contador++){
-		printf("\n-> %s", umaPilha.vetor[contador]);
+		printf("\n-> %s", umaPilha.vetor[contador].nome);
 	}
   return 0;
 }
