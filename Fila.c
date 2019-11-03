@@ -11,7 +11,6 @@ Implementação das operações:
 #include <stdio.h>
 #include <stdlib.h>
 
-// tamanho maximo da fila
 #define MAX 3
 
 // Tipo base dos elementos da lista 
@@ -89,13 +88,19 @@ int isVazia (t_fila * fila)
 int inserir (t_fila *fila, t_elemento valor) {
     t_no *novo;
     novo = criaNo();
-    if (novo == NULL)
+    if (novo == NULL){
+				printf("\nErro: Memória Insuficiente!");
         return 0; // Erro: memoria insuficiente
+		}
+
     novo->dado = valor;
-    if (isVazia(fila))
+
+    if (isVazia(fila)){
         fila->inicio = novo;
-    else
+		}else{
         (fila->final)->prox = novo;
+		}
+
     fila->final = novo;
     fila->quant_element++;
     return 1;
@@ -141,10 +146,35 @@ int main(void) {
 	t_elemento nomesLista;
 	t_no umNo;
 
-	//Criando a cabeça e o nó da filinha:
+	int contador;
+
+	/*
+	criarFila() == criaCabeca()
+	Criando a cabeça e o nó da filinha:
+	*/
 	filinha = *criaCabeca();
 	umNo = *criaNo();
 
+	//Usando isVazia() para verificar se a lista está vazia:
+	if (isVazia(&filinha) == 1){
+		printf("\nA fila está vazia!");
+	}else{
+		printf("\nA fila não está vazia!");
+	}//Como a fila foi criada recentemente a mensagem deverá ser "A fila está vazia!"
+		
+	//Usando função inserir() para inserir x valores ou até memória insuficiente:
+	for(contador = 0;(contador < 5)  || ((inserir(&filinha, nomesLista)) == 0);contador++){
+		printf("\nInsira um nome para adicionar a lista: ");
+		scanf("%s", nomesLista.nome);
+		inserir(&filinha, nomesLista);
+	}
+
+	//Usando isVazia() para verificar novamente se a lista está vazia:
+	if (isVazia(&filinha) == 1){
+		printf("\nA fila está vazia!\n");
+	}else{
+		printf("\nA fila não está vazia!");
+	}//Como a fila foi criada recentemente a mensagem deverá ser "A fila não está vazia!"
 	
 
   return 0;
