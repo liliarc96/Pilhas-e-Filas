@@ -142,7 +142,7 @@ t_elemento remover (t_fila *fila)
 
 
 int main(void) {
-  t_fila filinha;
+	t_fila filinha;
 	t_elemento nomesLista;
 	t_no umNo;
 
