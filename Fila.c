@@ -128,9 +128,18 @@ t_elemento remover (t_fila *fila)
     return valor;
 }
 
+t_elemento esvaziar(t_fila * fila){
+	int i;
+	t_no *aux;
+	t_elemento valor = { "" } ;
+	while(isVazia(fila)){
+		valor = remover(fila);
+	}
+	return valor;
+}
 
 int main(void) {
-	t_fila filinha;
+  t_fila filinha;
 	t_elemento nomesLista;
 	t_no umNo;
 
@@ -168,5 +177,20 @@ int main(void) {
 	nomesLista = remover(&filinha);
 	printf("\n%s removido da lista!", nomesLista.nome);
 
+	//exibir(&filinha);
+	//Exibindo valores em filinha:
+	for(contador = 0;contador >= filinha.quant_element;contador++){
+		printf("\n%s", filinha.inicio->prox);
+	}
+
+	//esvaziar():
+	esvaziar(&filinha);
+
+	//Usando isVazia() para verificar se a lista está vazia:
+	if (isVazia(&filinha) == 1){
+		printf("\nA fila está vazia!\n");
+	}else{
+		printf("\nA fila não está vazia!\n");
+	}//A mensagem deverá ser "A fila está vazia!"
   return 0;
 }
