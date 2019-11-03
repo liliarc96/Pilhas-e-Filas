@@ -132,7 +132,7 @@ int main(void) {
 	t_no umNo;
 
 	//Criando a cabeça e o nó da filinha:
-	filinha = *criaCabeca ();
+	filinha = *criaCabeca();
 	umNo = *criaNo();
 
 	
