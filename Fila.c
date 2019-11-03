@@ -11,7 +11,6 @@ Implementação das operações:
 #include <stdio.h>
 #include <stdlib.h>
 
-#define MAX 3
 
 // Tipo base dos elementos da lista 
 typedef struct elementos {
@@ -106,17 +105,6 @@ int inserir (t_fila *fila, t_elemento valor) {
     return 1;
 }
 
-
-int isCheia(t_fila * fila){
-    if(fila->quant_element == MAX){
-			printf("A fila já está cheia!\n");
-			return 1;
-		}else{
-			printf("A fila ainda tem espaço.\n");
-			return 0;
-		}
-}
-
 /**
  * Remove um elemento do inicio da fila.
  * 
@@ -157,12 +145,12 @@ int main(void) {
 
 	//Usando isVazia() para verificar se a lista está vazia:
 	if (isVazia(&filinha) == 1){
-		printf("\nA fila está vazia!");
+		printf("\nA fila está vazia!\n");
 	}else{
-		printf("\nA fila não está vazia!");
+		printf("\nA fila não está vazia!\n");
 	}//Como a fila foi criada recentemente a mensagem deverá ser "A fila está vazia!"
 		
-	//Usando função inserir() para inserir x valores ou até memória insuficiente:
+	//Usando função inserir() para inserir x (nesse caso 5) valores ou até memória insuficiente:
 	for(contador = 0;(contador < 5)  || ((inserir(&filinha, nomesLista)) == 0);contador++){
 		printf("\nInsira um nome para adicionar a lista: ");
 		scanf("%s", nomesLista.nome);
@@ -173,9 +161,12 @@ int main(void) {
 	if (isVazia(&filinha) == 1){
 		printf("\nA fila está vazia!\n");
 	}else{
-		printf("\nA fila não está vazia!");
-	}//Como a fila foi criada recentemente a mensagem deverá ser "A fila não está vazia!"
+		printf("\nA fila não está vazia!\n");
+	}//Como a fila recebeu 5 nomes a mensagem deverá ser "A fila não está vazia!"
 	
+	//Usando função remover() para remover o primeiro valor da lista, depois mostrando o nome removido:
+	nomesLista = remover(&filinha);
+	printf("\n%s removido da lista!", nomesLista.nome);
 
   return 0;
 }
