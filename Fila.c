@@ -1,3 +1,13 @@
+/*Fila Encadeada com Cabeça Especial
+Implementação das operações:
+1.criarFila();
+2.isVazia();
+3.inserir();
+4.remover();
+5.exibir();
+6.esvaziar().
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 
