@@ -132,16 +132,17 @@ t_elemento esvaziar(t_fila * fila){
 	int i;
 	t_no *aux;
 	t_elemento valor = { "" } ;
-	while(isVazia(fila)){
+	while(!isVazia(fila)){
 		valor = remover(fila);
 	}
 	return valor;
 }
 
 int main(void) {
-  t_fila filinha;
+  	t_fila filinha, aux;
 	t_elemento nomesLista;
-	t_no umNo;
+	t_no umNo, *aux;
+	
 
 	int contador;
 
@@ -160,10 +161,12 @@ int main(void) {
 	}//Como a fila foi criada recentemente a mensagem deverá ser "A fila está vazia!"
 		
 	//Usando função inserir() para inserir x (nesse caso 5) valores ou até memória insuficiente:
-	for(contador = 0;(contador < 5)  || ((inserir(&filinha, nomesLista)) == 0);contador++){
+	for(contador = 0;contador < 5;contador++){
 		printf("\nInsira um nome para adicionar a lista: ");
 		scanf("%s", nomesLista.nome);
-		inserir(&filinha, nomesLista);
+		if(inserir(&filinha, nomesLista) == 0){
+		      break;
+		}
 	}
 
 	//Usando isVazia() para verificar novamente se a lista está vazia:
@@ -179,12 +182,20 @@ int main(void) {
 
 	//exibir(&filinha);
 	//Exibindo valores em filinha:
-	for(contador = 0;contador >= filinha.quant_element;contador++){
-		printf("\n%s", filinha.inicio->prox);
+	aux =filinha.inicio;
+	for(contador = 0;contador < filinha.quant_element;contador++){
+		printf("\n%s", aux->dado.nome);
+		aux = aux->prox;
 	}
 
 	//esvaziar():
 	esvaziar(&filinha);
+	
+	aux =filinha.inicio;
+	for(contador = 0;contador < filinha.quant_element;contador++){
+		printf("\n%s", aux->dado.nome);
+		aux = aux->prox;
+	}
 
 	//Usando isVazia() para verificar se a lista está vazia:
 	if (isVazia(&filinha) == 1){
