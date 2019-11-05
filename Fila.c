@@ -139,7 +139,7 @@ t_elemento esvaziar(t_fila * fila){
 }
 
 int main(void) {
-  	t_fila filinha, aux;
+  	t_fila filinha;
 	t_elemento nomesLista;
 	t_no umNo, *aux;
 	
